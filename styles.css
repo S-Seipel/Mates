@@ -1,0 +1,342 @@
+@charset "UTF-8";
+:root {
+  --negro: #393939;
+  --principal: rgb(56, 56, 211);
+  --secundario: #fffddf;
+  --blanco: #fff;
+  /* Tipografía */
+  --tipo-principal:'ADLaM Display', cursive;
+  --tipo-secundaria: 'Mukta', sans-serif;
+}
+
+/* Las adaptamos al modo oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --negro: #ececec;
+  }
+}
+/* Reseteamos los margin y paddings de todas las etiquetas */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+/* Evitamos problemas con las imagenes */
+img, picture, video, figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  /* opcional */
+  -o-object-fit: cover;
+     object-fit: cover;
+  /* opcional */
+  -o-object-position: center center;
+     object-position: center center;
+}
+
+/* Reseteamos los enlaces para funcionar como cajas... */
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ... excepto los que se encuentran en párrafos */
+p a {
+  display: inline;
+}
+
+/* Quitamos los puntos de los <li> */
+li {
+  list-style-type: none;
+}
+
+/* Configuramos anclas suaves */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Desactivamos estilos por defecto de las principales etiquetas de texto */
+h1, h2, h3, h4, h5, h6, p, span, a, strong, blockquote, b, u, em {
+  font-size: 1em;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Evitamos problemas con los pseudoelementos de quotes */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+/* Configuramos el texto que seleccionamos */
+::-moz-selection {
+  background-color: var(--negro);
+  color: var(--blanco);
+}
+::selection {
+  background-color: var(--negro);
+  color: var(--blanco);
+}
+
+/* Nivelamos problemas de tipografías y colocación de formularios */
+form, input, textarea, select, button, label {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+  background-color: transparent;
+  color: inherit;
+  display: block;
+  /* opcional */
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+/* Reseteamos las tablas */
+table, tr, td {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Evitamos problemas con los SVG */
+svg {
+  width: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+/* (Probándolo, no usar en producción) En el caso de añadir una  */
+/* p svg{
+  display: inline;
+  width: initial;
+} */
+/* Configuramos la tipografía para toda la web */
+body {
+  min-height: 100vh;
+  font-size: 100%;
+  font-family: var(--tipo-principal);
+  color: var(--negro);
+  /* opcional */
+  line-height: 1.4em;
+  /* opcional */
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  /* opcional */
+  font-smooth: always;
+  /* opcional */
+  -webkit-font-smoothing: antialiased;
+  /* opcional */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+.wraper{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    background-color: var(--principal);
+}
+aside{
+    font-family: var(--tipo-principal);
+    color: rgb(255, 255, 255);
+    padding: 2rem;
+    padding-right: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    min-width: 200px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+}
+aside h1{
+    margin-top: 15px;
+    font-weight: 600;
+    width: auto;
+    height: auto;
+    font-size: 50px;
+}
+aside .div__nav{
+    gap: 20px;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+.menu__btn{
+    background-color: transparent;
+    border: 0;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.75rem;
+    width: 100%;
+}
+.menu__btn.active{
+    background-color: white;
+    color: var(--principal);
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    position: relative;
+}
+.menu__btn.active::before {
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 2rem;
+    bottom: 100%;
+    right: 0;
+    background-color: transparent;
+    border-bottom-right-radius: 0.5rem;
+    box-shadow: 0 1rem 0 white;
+}
+.menu__btn.active::after {
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 2rem;
+    top: 100%;
+    right: 0;
+    background-color: transparent;
+    border-top-right-radius: 0.5rem;
+    box-shadow: 0 -1rem 0 white;
+}
+footer{
+    color: rgba(255, 255, 255, 0.356);
+    display: flex;
+    flex-flow: row wrap;
+    gap: 5px;
+}
+
+
+
+
+.main{
+    margin: 1rem;
+    margin-left: 0;
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    border-radius:2rem;
+    padding: 1rem;
+}
+.titulo--principal{
+    color: var(--principal);
+    font-weight: 600;
+    font-size: 30px;
+    margin: 20px;
+    margin-bottom: 40px;
+}
+.contenedor--productos{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:1rem;
+}
+.producto{
+  min-height: 100%;
+    padding: .5rem;
+    background-color: var(--principal);
+    border-radius: .5rem;
+}
+.producto--img{
+    max-width: 100%;
+    border-radius: .5rem;
+}
+.producto--titulo{
+    margin: 10px 0;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.header--mobile{
+  display: none;
+}
+.close--menu{
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 700px) {
+  
+  .wraper{
+    grid-template-columns: 1fr;
+  }
+  aside{
+    position: fixed;
+    z-index: 9;
+    background-color: var(--principal);
+    left: 0;
+    box-shadow: 0 0 0 100vw rgb(0, 0, 0, .75);
+    width: 50vw;
+    transform: translateX(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all .2s ease;
+  }
+  .aside--visible{
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  .menu__btn.active::after,
+  .menu__btn.active::before{
+    display:none;
+  }
+  .main{
+    margin: 1rem;
+    padding: 2rem;
+  }
+  .contenedor--productos{
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .header--mobile{
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  .open--menu, .close--menu{
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  .h1--mobile{
+    font-size: 2.5rem;
+  }
+  .close--menu{
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+  }
+}
+
+
+
+
+
+
